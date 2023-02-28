@@ -1,0 +1,19 @@
+.root {
+    max-width: 1280px;
+    background-color: black;
+    color: #FFF;
+    margin: 0 auto;
+    padding: 0;
+}
+
+@media screen and (max-width: 900px) {
+    .root {
+        margin: 0 27px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .root {
+        margin: 0;
+    }
+}

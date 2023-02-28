@@ -4,10 +4,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Место</title>
     <link rel="stylesheet" href="./pages/index.css">
+    <script src="/index.js" defer></script>
 </head>
 
-<body>
-    
+<body class="root">
+    <header class="header">
+        <img class="logo" src="./images/logo.svg" alt="Логотим Место">
+    </header>
+    <main class="main">
+        <section class="profile">
+            <div class="profile__info">
+                <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар">
+                <ul class="profile__name">
+                    <li class="profile__title-add">
+                        <h1 class="profile__title"></h1><button class="profile__edit"><img class="profile__vector-edit"
+                                src="./images/Vector_edit.svg" alt="Карандаш на кнопке"></button>
+                    </li>
+                    <li>
+                        <p class="profile__text"></p>
+                    </li>
+                </ul>
+            </div>
+            <button class="profile__add"><img class="profile__vector-add" src="./images/Vector_add.svg"
+                    alt="Плюс на кнопке"></button>
+        </section>
+        <section class="elements">
+            <ul class="elements__list">
+                <li class="element__blok">
+                    <img class="element__img" src="./images/karachaevsk.jpg" alt="Карачаевск">
+                    <div class="element__title">
+                        <h3 class="element__text">Карачаевск</h3>
+                        <img class="element__like" src="./images/Vector_element.svg" alt="Лайк">
+                    </div>
+                </li>
+                <li class="element__blok">
+                    <img class="element__img" src="./images/elbrus.jpg" alt="Гора Эльбрус">
+                    <div class="element__title">
+                        <h3 class="element__text">Гора Эльбрус</h3>
+                        <img class="element__like" src="./images/Vector_element.svg" alt="Лайк">
+                    </div>
+                </li>
+                <li class="element__blok">
+                    <img class="element__img" src="./images/donbai.jpg" alt="Домбай">
+                    <div class="element__title">
+                        <h3 class="element__text">Домбай</h3>
+                        <img class="element__like" src="./images/Vector_element.svg" alt="Лайк">
+                    </div>
+                </li>
+                <li class="element__blok">
+                    <img class="element__img" src="./images/tobias-tullius-uqJaaUsqmRQ-unsplash.jpg"
+                        alt="Природа Севера">
+                    <div class="element__title">
+                        <h3 class="element__text">Природа Севера</h3>
+                        <img class="element__like" src="./images/Vector_element.svg" alt="Лайк">
+                    </div>
+                </li>
+                <li class="element__blok">
+                    <img class="element__img" src="./images/silas-baisch-K785Da4A_JA-unsplash.jpg" alt="Подводный мир">
+                    <div class="element__title">
+                        <h3 class="element__text">Подводный мир</h3>
+                        <img class="element__like" src="./images/Vector_element.svg" alt="Лайк">
+                    </div>
+                </li>
+                <li class="element__blok">
+                    <img class="element__img" src="./images/muhammad-nasir-HB-QSNQeXYc-unsplash.jpg"
+                        alt="Морские исследования">
+                    <div class="element__title">
+                        <h3 class="element__text">Морские исследования</h3>
+                        <img class="element__like" src="./images/Vector_element.svg" alt="Лайк">
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="footer__text">© 2020 Mesto Russia</p>
+    </footer>
+    <div class="popup">
+        <div class="popup__container">
+            <button type="button" class="popup__close" name="popup_close"></button>
+            <h4 class="popup__header">Редактировать профиль</h4>
+            <form class="popup__fieldset">
+                <input type="text" class="popup__form popup__form_name">
+                <input type="text" class="popup__form popup__form_information">
+            </form>
+            <button type="submit" class="popup__button">Сохранить</button>
+        </div>
+    </div>
 </body>
+
+</html>

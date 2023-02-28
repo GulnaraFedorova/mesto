@@ -1,0 +1,12 @@
+.element__title {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    background-color: #FFF;
+    max-height: 361px;
+    width: calc(282px - 42px);
+    padding: 25px 21px 31px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    justify-content: space-between;
+}
