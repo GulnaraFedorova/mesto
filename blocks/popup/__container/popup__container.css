@@ -9,7 +9,7 @@
     border-radius: 10px;
     color: #000;
     position: absolute;
-    top:50%; 
+    top: 50%;
     left: 50%;
     margin-top: -134px;
     margin-left: -212px;
@@ -20,7 +20,7 @@
         padding: 25px 22px;
         max-width: calc(282px - padding);
         height: calc(322px - padding);
-        top: 50%; 
+        top: 50%;
         left: 50%;
         margin-top: -136px;
         margin-left: -140px;
