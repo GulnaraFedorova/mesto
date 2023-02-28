@@ -11,4 +11,4 @@ _Планы по доработке проекта:_
 * Отработать все замечания.
 * Создать работающий сервис.
 
- [Ссылка на GitHub Pages]( )
+ [Ссылка на GitHub Pages](https://gulnarafedorova.github.io/mesto/).

@@ -1,8 +1,8 @@
-.element__like {
+.elements__like {
     margin: 0;
     align-self: center;
 }
 
-.element__like:hover {
+.elements__like:hover {
     opacity: 0.5;
 }
