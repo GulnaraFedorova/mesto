@@ -5,10 +5,10 @@ _Описание проекта:_
 
 Файловая структура проекта собрана по правилам [Nested БЭМ](https://ru.bem.info/methodology/filestructure/#nested "Правила!") 
 Создан типовой одностраничный сайт с применением адаптивной вёрстки по макету.
-* [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+[Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
 
 _Планы по доработке проекта:_
 * Отработать все замечания.
 * Создать работающий сервис.
 
- [Ссылка на GitHub Pages](https://gulnarafedorova.github.io/mesto/).
+ [Ссылка на GitHub Pages](https://gulnarafedorova.github.io/mesto/)
