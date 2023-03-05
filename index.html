@@ -19,8 +19,9 @@
                 <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар">
                 <ul class="profile__name">
                     <li class="profile__title-add">
-                        <h1 class="profile__title">Жак-Ив Кусто</h1><button class="profile__edit"><img class="profile__vector-edit"
-                                src="./images/Vector_edit.svg" alt="Карандаш на кнопке"></button>
+                        <h1 class="profile__title">Жак-Ив Кусто</h1><button class="profile__edit"><img
+                                class="profile__vector-edit" src="./images/Vector_edit.svg"
+                                alt="Карандаш на кнопке"></button>
                     </li>
                     <li>
                         <p class="profile__text">Исследователь океана</p>
@@ -28,7 +29,7 @@
                 </ul>
             </div>
             <button class="profile__add"><img class="profile__vector-add" src="./images/Vector_add.svg"
-                    alt="Плюс на кнопке"></button>
+                    alt="Плюс на кнопке" aria-label="Редактировать профиль"></button>
         </section>
         <section class="elements">
             <ul class="elements__list">
@@ -87,10 +88,10 @@
             <button type="button" class="popup__close" name="popup_close"></button>
             <h4 class="popup__header">Редактировать профиль</h4>
             <form class="popup__fieldset">
-                <input type="text" class="popup__form popup__form_name">
-                <input type="text" class="popup__form popup__form_information">
+                <input type="text" name="name" class="popup__form popup__form_name">
+                <input type="text" name="information" class="popup__form popup__form_information">
+                <button type="submit" class="popup__button">Сохранить</button>
             </form>
-            <button type="submit" class="popup__button">Сохранить</button>
         </div>
     </div>
 </body>
