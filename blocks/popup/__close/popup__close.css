@@ -9,6 +9,8 @@
     position: absolute;
     top: -40px;
     right: -40px;
+    z-index: 1;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 620px) {
