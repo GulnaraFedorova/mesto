@@ -2,11 +2,12 @@
     display: flex;
     align-items: center;
     gap: 18px;
-    width: 336px;
+    width: 314px;
 }
 
 @media screen and (max-width: 375px) {
     .profile__title-add {
+        width: 266px;
         gap: 10px;
         padding: 0 0 0 20px;
     }
