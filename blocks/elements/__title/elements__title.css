@@ -1,9 +1,8 @@
 .elements__title {
     display: flex;
     background-color: #fff;
-    max-height: 361px;
     width: calc(282px - 43px);
-    padding: 25px 21px 31px;
+    padding: 25px 21px 25px;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     justify-content: space-between;

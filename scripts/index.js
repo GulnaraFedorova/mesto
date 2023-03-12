@@ -1,7 +1,7 @@
 let profileName = document.querySelector ('.profile__title');
 let profileInformation = document.querySelector ('.profile__text');
-let profileNameInput = document.querySelector ('.popup__form_name');
-let profileInformationInput = document.querySelector ('.popup__form_information');
+let profileNameInput = document.querySelector ('.popup__form_type_name');
+let profileInformationInput = document.querySelector ('.popup__form_type_information');
 let popupCloseButton = document.querySelector ('.popup__close');
 let formElement = document.querySelector ('.popup__fieldset');
 let editPopup = document.querySelector ('.popup');

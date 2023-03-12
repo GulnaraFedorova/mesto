@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Место</title>
     <link rel="stylesheet" href="./pages/index.css">
-    <script src="./index.js" defer></script>
+    <script src="./scripts/index.js" defer></script>
 </head>
 
 <body class="root">
@@ -33,7 +33,7 @@
                     <img class="elements__img" src="./images/karachaevsk.jpg" alt="Карачаевск">
                     <div class="elements__title">
                         <h2 class="elements__text">Карачаевск</h2>
-                        <button type="button" class="elements__like"></button>
+                        <button type="button" class="elements__like elements__like_active"></button>
                     </div>
                 </li>
                 <li class="elements__blok">
@@ -84,10 +84,9 @@
             <button type="button" class="popup__close" name="popup_close"></button>
             <h2 class="popup__header">Редактировать профиль</h2>
             <form class="popup__fieldset" name="form">
-                <input type="text" name="name" placeholder="Имя"
-                    class="popup__form popup__form_name"><!--При реализации модификатора сложного типа: popup__input_type_message, платформа не пропускает на ревью, с ошибкой, что написан не по БЭМ -->
+                <input type="text" name="name" placeholder="Имя" class="popup__form popup__form_type_name">
                 <input type="text" name="information" placeholder="Информация"
-                    class="popup__form popup__form_information">
+                    class="popup__form popup__form_type_information">
                 <button type="submit" class="popup__button">Сохранить</button>
             </form>
         </div>
