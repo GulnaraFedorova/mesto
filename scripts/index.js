@@ -45,8 +45,14 @@ editPopupOpenButton.addEventListener ('click', () => {
   profileInformationInput.value = profileInformation.textContent;
 });
 
-editPopupCloseButton.addEventListener ('click', () => {
-  closePopup(editPopup);
+// находим все крестики проекта по универсальному селектору
+const closeButtons = document.querySelectorAll('.popup__close');
+
+closeButtons.forEach((button) => {
+  // находим 1 раз ближайший к крестику попап 
+  const popup = button.closest('.popup');
+  // устанавливаем обработчик закрытия на крестик
+  button.addEventListener('click', () => closePopup(popup));
 });
 
 
@@ -79,10 +85,7 @@ const createCard = (card) => {
     captionImage.textContent = card.name;
     fullImage.setAttribute('alt', card.name);
   });
-  
-  imagePopupClose.addEventListener('click', () => {
-    closePopup(imagePopupOpen);
-  });
+
 //удаление карточки
   const deleteButton = newCard.querySelector('.elements__delete');
   deleteButton.addEventListener('click', (evt) => {
