@@ -53,10 +53,10 @@
             <h2 class="popup__header">Редактировать профиль</h2>
             <form class="popup__fieldset popup__fieldset_edit popup__fieldset_edit" name="form" novalidate>
                 <input id="name" type="text" name="name" placeholder="Имя" class="popup__form popup__form_type_name" required minlength="2" maxlength="40" autocomplete="off">
-                <span id="error-name" class="popup__input_type_error"></span>
+                <span id="error-name" class="popup__input_error"></span>
                 <input id="info" type="text" name="information" placeholder="Информация"
                     class="popup__form popup__form_type_information" required minlength="2" maxlength="200" autocomplete="off">
-                <span id="error-info" class="popup__input_type_error"></span>
+                <span id="error-info" class="popup__input_error"></span>
                 <button type="submit" class="popup__button popup__button_edit" disabled>Сохранить</button>
             </form>
         </div>
@@ -68,10 +68,10 @@
             <form class="popup__fieldset popup__fieldset_add" name="form" novalidate  >
                 <input id="text" type="text" name="card" placeholder="Название" 
                     class="popup__form popup__form_card_name" required minlength="2" maxlength="30">
-                    <span id="error-text" class="popup__input_type_error"></span>
+                    <span id="error-text" class="popup__input_error"></span>
                 <input id="url" type="url" name="cardurl" placeholder="Ссылка на картинку"
                     class="popup__form popup__form_card_image" required autocomplete="off">
-                <span id="error-url" class="popup__input_type_error"></span>
+                <span id="error-url" class="popup__input_error"></span>
                 <button type="submit" class="popup__button popup__button_add" disabled>Создать</button>
             </form>
         </div>
