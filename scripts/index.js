@@ -116,7 +116,7 @@ const formAddElement = document.querySelector ('.popup__fieldset_add');
 const addPopup = document.querySelector ('.popup_add');
 const addPopupButton = document.querySelector('.profile__add');
 
-function formAddSubmitHandler (evt) {
+function handleAddFormSubmit (evt) {
 	evt.preventDefault(); 
   const form = evt.target;
   const link = cardImageInput.value;
@@ -134,8 +134,5 @@ function formAddSubmitHandler (evt) {
 addPopupButton.addEventListener ('click', () => {
   openPopup(addPopup);
 });
-popupAddCloseButton.addEventListener ('click', () => {
-  closePopup(addPopup);
-});
 
-formAddElement.addEventListener('submit', formAddSubmitHandler);
+formAddElement.addEventListener('submit', handleAddFormSubmit);
