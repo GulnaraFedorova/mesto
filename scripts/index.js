@@ -21,6 +21,7 @@ const addPopup = document.querySelector ('.popup_add');
 const addPopupButton = document.querySelector('.profile__add');
 const closeButtons = document.querySelectorAll('.popup__close');
 const popupList = document.querySelectorAll('.popup')
+const elementsImg = document.querySelector('.popup__image')
 
 const createNewCard = (newCard, openPopup, template) => {
   const card = new Card(newCard, openPopup, template)
@@ -87,7 +88,6 @@ editPopupOpenButton.addEventListener ('click', () => {
   openPopup(editPopup);
   profileNameInput.value = profileName.textContent;
   profileInformationInput.value = profileInformation.textContent;
-  profileFormValidator.enableValidation(editFormElement)
 });
 
 editFormElement.addEventListener('submit', (evt) => {
@@ -109,13 +109,12 @@ function handleAddFormSubmit (evt) {
   };
     addCard(createNewCard(newCard, openPopup, elementsTemplate));
     closePopup(addPopup);
-    formAddElement.reset();
 };
 
 addPopupButton.addEventListener ('click', () => {
   formAddElement.reset()
   openPopup(addPopup);
-  cardFormValidator.enableValidation(formAddElement)
+  cardFormValidator.disableButton(formAddElement);
 });
 
 formAddElement.addEventListener('submit', handleAddFormSubmit);

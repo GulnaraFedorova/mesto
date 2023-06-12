@@ -8,9 +8,6 @@ export default class FormValidator {
 
   enableValidation () {
     this._inputs.forEach((input) => {this._setEventListeners(input)})
-    this._form.addEventListener('submit', (event) => {
-      event.preventDefault();
-    })
   }
 
   _setEventListeners (input) {
@@ -21,9 +18,9 @@ export default class FormValidator {
   }
 
   _checkInputValidity (input) {
-    const errorElement = document.querySelector(`#error-${ input.id }`);
+    const errorElement = this._form.querySelector(`#error-${ input.id }`);
 
-    if ( input.checkValidity() ) {
+    if (input.checkValidity() ) {
       input.classList.remove(this._config.inputErrorClass);
       errorElement.classList.remove(this._config.errorSpan);
       errorElement.textContent = '';
@@ -33,6 +30,13 @@ export default class FormValidator {
       errorElement.classList.add(this._config.errorSpan);
     }
   }
+  /*
+  resetFormError() {
+    this._inputs.forEach(input => {
+      const errorElement = this._form.querySelector(`#error-${ input.id }`);
+      _hideError(input, errorElement);
+    });
+  } */
 
   _toggleButtonValidity () {
     if (this._form.checkValidity() ) {

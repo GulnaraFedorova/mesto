@@ -39,5 +39,6 @@ export default class Card {
   
     _handleDelete () {
       this._card.remove()
+      this. _card = null;
     }
   }
