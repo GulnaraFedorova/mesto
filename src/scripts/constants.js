@@ -1,5 +1,5 @@
 //массив карточек 
-const cards = [
+const initialItems = [
     {
       name: 'Архыз',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -35,4 +35,4 @@ const config = {
     errorSpan: 'popup__input-error',
   }
 
-  export { cards, config }
+  export { initialItems, config }
