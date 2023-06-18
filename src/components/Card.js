@@ -3,8 +3,6 @@ export default class Card {
       this._newCard = data
       this._cardSelector = cardSelector;
       this._handleCardClick = handleCardClick;
-      //this._openPopup = openPopup
-      //this._cardElement = cardSelector.content.querySelector('.elements__blok').cloneNode(true)
     }
 
     generateCard () {
