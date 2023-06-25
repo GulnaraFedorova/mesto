@@ -1,7 +1,7 @@
 import {initialItems, config} from '../../src/components/constants.js';
 import Card from '../components/card.js';
 import FormValidator from '../components/FormValidator.js';
-import PopupWithForm from '../components/PopupWithForm.js'
+import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
 import Section from '../components/Section.js';
@@ -47,16 +47,16 @@ section.renderElements();
 
 
 //добавления картинок
-const popupNewPlace = new PopupWithForm (addPopup, {
-  handleFormSubmit: (input) => {
-    const data = {
-      name: input['card'],
-      link: input['cardurl']
-    }
-    section.newAddItem(createNewCard(data));
-  }
-});
+const popupNewPlace = new PopupWithForm (addPopup, handleFormCardAddSubmit);
 popupNewPlace.setEventListeners();
+
+function handleFormCardAddSubmit() {
+  const card = {
+    name: cardNameInput.value,
+    link: cardImageInput.value,
+  };
+  section.addItem(card);
+}
 
 addPopupButton.addEventListener ('click', () => {
   popupNewPlace.open();
@@ -73,21 +73,23 @@ const userInfo = new UserInfo({
 });
 
 //редактирование профиля
-const popupProfile = new PopupWithForm (editPopup, (evt) => {
-  evt.preventDefault();
-  const inputValues = popupProfile._getInputValues();
-  userInfo.setUserInfo({ userName: inputValues.title, userDescription: inputValues.subtitle });
-  popupProfile.close();
-});
+const popupProfile = new PopupWithForm (editPopup, handleFormSubmit)
 popupProfile.setEventListeners();
 
+function handleFormSubmit({ userName, userDescription }) {
+  userInfo.setUserInfo({ userName, userDescription });
+  popupProfile.close();
+  }
+
 editPopupOpenButton.addEventListener ('click', () => {
+  profileFormValidator.resetFormError();
+  popupProfile.open();
   const userInfoData = userInfo.getUserInfo();
   profileNameInput.value = userInfoData.userName;
   profileInformationInput.value = userInfoData.userDescription;
-  profileFormValidator.resetFormError();
-  popupProfile.open();
 });
 
 const profileFormValidator = new FormValidator (config, editPopup);
 profileFormValidator.enableValidation();
+
+/////////////
