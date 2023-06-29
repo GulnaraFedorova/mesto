@@ -1,7 +1,7 @@
 import {initialItems, config} from '../../src/components/constants.js';
 import Card from '../components/card.js';
 import FormValidator from '../components/FormValidator.js';
-import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithForm from '../components/PopupWithForm.js'
 import PopupWithImage from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
 import Section from '../components/Section.js';
@@ -47,7 +47,7 @@ section.renderElements();
 
 
 //добавления картинок
-const popupNewPlace = new PopupWithForm (addPopup, handleFormCardAddSubmit);
+const popupNewPlace = new PopupWithForm (addPopup, handleFormCardAddSubmit)
 popupNewPlace.setEventListeners();
 
 function handleFormCardAddSubmit() {
@@ -56,6 +56,7 @@ function handleFormCardAddSubmit() {
     link: cardImageInput.value,
   };
   section.addItem(card);
+  formAddElement.reset(card);
 }
 
 addPopupButton.addEventListener ('click', () => {
@@ -76,20 +77,22 @@ const userInfo = new UserInfo({
 const popupProfile = new PopupWithForm (editPopup, handleFormSubmit)
 popupProfile.setEventListeners();
 
-function handleFormSubmit({ userName, userDescription }) {
-  userInfo.setUserInfo({ userName, userDescription });
-  popupProfile.close();
+function handleFormSubmit(input) {
+  const data = {
+    userName: input['name'],
+    userDescription: input['information']
   }
+  userInfo.setUserInfo(data);
+  editFormElement.reset(input);
+}
 
 editPopupOpenButton.addEventListener ('click', () => {
+  const input = userInfo.getUserInfo();
+  profileNameInput.value = input.userName;
+  profileInformationInput.value = input.userDescription;
   profileFormValidator.resetFormError();
   popupProfile.open();
-  const userInfoData = userInfo.getUserInfo();
-  profileNameInput.value = userInfoData.userName;
-  profileInformationInput.value = userInfoData.userDescription;
 });
 
 const profileFormValidator = new FormValidator (config, editPopup);
 profileFormValidator.enableValidation();
-
-/////////////

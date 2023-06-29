@@ -15,4 +15,4 @@ export default class UserInfo {
     this._userNameElement.textContent = userName; 
     this._userDescriptionElement.textContent = userDescription; 
   } 
-  }
+}
