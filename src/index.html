@@ -14,13 +14,15 @@
     <main class="main">
         <section class="profile">
             <div class="profile__info">
-                <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Аватар">
+                <button class="profile__edit-avatar">
+                    <img class="profile__avatar" src="#" alt="Аватар">
+                </button>
                 <div class="profile__name">
                     <div class="profile__title-add">
-                        <h1 class="profile__title">Жак-Ив Кусто</h1>
+                        <h1 class="profile__title"></h1>
                         <button type="button" class="profile__edit" aria-label="Закрыть"></button>
                     </div>
-                    <p class="profile__text">Исследователь океана</p>
+                    <p class="profile__text"></p>
                 </div>
             </div>
             <button type="button" class="profile__add" aria-label="close"></button>
@@ -33,7 +35,10 @@
                         <button type="button" class="elements__delete" aria-label="Удалить"></button>
                         <div class="elements__title">
                             <h2 class="elements__text"></h2>
-                            <button type="button" class="elements__like" aria-label="Поставить лайк"></button>
+                            <div class="elements__like-info">
+                                <button type="button" class="elements__like" aria-label="Поставить лайк"></button>
+                                <span class="elements__like-counter"></span>
+                            </div>
                         </div>
                     </div>
                 </template>
@@ -43,6 +48,26 @@
     <footer class="footer">
         <p class="footer__text">© 2020 Mesto Russia</p>
     </footer>
+    <div class="popup popup_confirmation">
+        <div class="popup__container">
+            <button type="button" class="popup__close popup__close_confirmation" name="popup_confirmation" aria-label="close"></button>
+            <h2 class="popup__header">Вы уверены?</h2>
+            <form class="popup__fieldset " name="form" novalidate>
+                <button type="submit" class="popup__button popup__button_confirmation">Да</button>
+            </form>
+        </div>
+    </div>
+    <div class="popup popup_avatar">
+        <div class="popup__container">
+            <button type="button" class="popup__close popup__close_avatar" name="popup_avatar" aria-label="close"></button>
+            <h2 class="popup__header">Обновить аватар</h2>
+            <form class="popup__fieldset popup__fieldset_avatar" name="form" novalidate>
+                <input id="avatar" type="url" name="avatar" required placeholder="Ссылка на изображение" class="popup__form popup__form_type_edit-avatar">
+                <span id="error-avatar" class="popup__input-error"></span>
+                <button type="submit" class="popup__button" disabled>Сохранить</button>
+            </form>
+        </div>
+    </div>
     <div class="popup popup_edit">
         <div class="popup__container">
             <button type="button" class="popup__close popup__close_edit" name="popup_close" aria-label="close"></button>
@@ -62,11 +87,11 @@
             <button type="button" class="popup__close popup__close_add" name="popup_close" aria-label="Закрыть"></button>
             <h2 class="popup__header">Новое место</h2>
             <form class="popup__fieldset popup__fieldset_add" name="form" novalidate>
-                <input id="text" type="text" name="card" placeholder="Название" 
+                <input id="text" type="text" name="nameImg" placeholder="Название" 
                     class="popup__form popup__form_card_name" required minlength="2" maxlength="30">
                     <span id="error-text" class="popup__input-error"></span>
-                <input id="url" type="url" name="cardurl" placeholder="Ссылка на картинку"
-                    class="popup__form popup__form_card_image" required autocomplete="off">
+                <input id="url" type="url" name="linkImg" placeholder="Ссылка на картинку"
+                    class="popup__form popup__form_card_image" required >
                 <span id="error-url" class="popup__input-error"></span>
                 <button type="submit" class="popup__button popup__button_add" disabled>Создать</button>
             </form>
@@ -75,7 +100,7 @@
     <div class="popup popup_openimage">
         <figure class="popup__figure">
             <button type="button" class="popup__close popup__close_img" aria-label="Закрыть"></button>
-            <img class="popup__image" src="<%=require('./images/silas-baisch-K785Da4A_JA-unsplash.jpg')%>">
+            <img class="popup__image" src="#" alt="#">
             <figcaption class="popup__caption"></figcaption>
         </figure>
     </div>
