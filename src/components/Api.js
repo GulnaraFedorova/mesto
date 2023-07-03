@@ -34,13 +34,13 @@ export default class Api {
     }
 
     //oбновить данные профиля
-    updateProfileInfo(name, about) {
+    updateProfileInfo(data) {
         return fetch(`${this._url}/users/me`, {
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
-                name: name,
-                about: about
+                name: data.name,
+                about: data.about
             })
         }).then(this._checkingResponse)
     };
@@ -56,8 +56,8 @@ export default class Api {
         };
         
     //удаление карточки
-    deleteCard(id) {
-        return fetch(`${this._url}/cards/${id}`, {
+    deleteCard(cardId) {
+        return fetch(`${this._url}/cards/${cardId}`, {
             method: 'DELETE',
             headers: {
                 authorization: this._authorization
@@ -67,8 +67,8 @@ export default class Api {
     }
     
     //добавление и удаление лайка
-    addLike(id) {
-        return fetch(`${this._url}/cards/${id}/likes`, {
+    addLike(cardId) {
+        return fetch(`${this._url}/cards/${cardId}/likes`, {
             method: 'PUT',
             headers: {
                 authorization: this._authorization
@@ -76,8 +76,8 @@ export default class Api {
         }).then(this._checkingResponse)
     };
    
-    deleteLike(id) {
-        return fetch(`${this._url}/cards/${id}/likes`, {
+    deleteLike(cardId) {
+        return fetch(`${this._url}/cards/${cardId}/likes`, {
             method: 'DELETE',
             headers: {
                 authorization: this._authorization

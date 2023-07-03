@@ -1,4 +1,3 @@
-import {config} from '../../src/components/constants.js';
 import Card from '../components/card.js';
 import FormValidator from '../components/FormValidator.js';
 import PopupWithForm from '../components/PopupWithForm.js'
@@ -6,38 +5,27 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
 import Section from '../components/Section.js';
 import Api from '../components/Api.js';
-//import PopupWithConfirm from '../components/PopupWithConfirm.js';
-
+import PopupWithConfirm from '../components/PopupWithConfirm.js';
+import {
+  config,
+  profileName,
+  profileInformation,
+  profileAvatar,
+  profileNameInput,
+  profileInformationInput,
+  editPopup,
+  editPopupOpenButton,
+  cardsContainerSelector,
+  cardSelector,
+  addPopup,
+  addPopupButton,
+  imagePopupOpen,
+  popupDelete,
+  avatarPopup,
+  avatarOpenButton,
+} from '../utils/constants.js';
 import '../pages/index.css'
 
-//открытие и закрытие окна редактирования профиля
-const profileName = '.profile__title';
-const profileInformation = '.profile__text';
-const profileAvatar = '.profile__avatar';
-
-const profileNameInput = document.querySelector ('.popup__form_type_name');
-const profileInformationInput = document.querySelector ('.popup__form_type_information');
-const editPopup = document.querySelector ('.popup_edit');
-const editFormElement = editPopup.querySelector ('.popup__fieldset_edit');
-const editPopupOpenButton = document.querySelector('.profile__edit');
-//добавление массива карточек
-const cardsContainerSelector = '.elements__list';
-//функция создания карточки
-const cardSelector = '#templateCard';
-const cardNameInput = document.querySelector ('.popup__form_card_name');
-const cardImageInput = document.querySelector ('.popup__form_card_image');
-const formAddElement = document.querySelector ('.popup__fieldset_add');
-const addPopup = document.querySelector ('.popup_add');
-const addPopupButton = document.querySelector('.profile__add');
-const closeButtons = document.querySelectorAll('.popup__close');
-const popupList = document.querySelectorAll('.popup');
-const elementsImg = document.querySelector('.popup__image');
-const imagePopupOpen  = document.querySelector ('.popup_openimage');
-
-const popupDelete = document.querySelector('.popup_confirmation');
-const avatarPopup = document.querySelector ('.popup_avatar');
-const avatarOpenButton = document.querySelector('.profile__edit-avatar');
-const editFormAvatar = editPopup.querySelector ('.popup__fieldset_avatar');
 let userId = 0;
 
 const api = new Api({
@@ -48,27 +36,17 @@ const api = new Api({
   }
 })
 
-//данные юзера
-const userInfo = new UserInfo({ 
-  profileName,
-  profileInformation,
-  profileAvatar,
-});
-
-
 //размещение картинок
-function createNewCard(item, userId) {
-  const card = new Card (
-    item, 
-    cardSelector,
-    () =>{
-     popupOpenImage.open(item)
+function createNewCard(data) {
+  const card = new Card ({
+    data, 
+    handleCardClick: (name, link) =>{
+     popupOpenImage.open(name, link);
     },
-    (id) =>{
-      //console.log('id', id)
-      popupConfirm.open( )
-      popupConfirm.changeSubmitHandler(() => {
-        api.deleteCard(id).then(() => {
+    handleDeleteClick: () =>{
+      popupConfirm.open();
+      popupConfirm.submitCallback(() => {
+        api.deleteCard(card.getId()).then(() => {
           card.handleDelete();
           popupConfirm.close();
         })
@@ -76,24 +54,25 @@ function createNewCard(item, userId) {
         .finally(() => popupConfirm.setDefaultButtonText());
       })
     },
-    (id) => {
-      if(card.isLiked()){
-        api.deleteLike(id).then(res => {
-          card.handleLike(res.likes)
-          .catch((error) => console.error(`Ошибка при снятии лайка ${error}`))
+    handleDeleteLike: (cardId) => {
+        api.deleteLike(cardId).then((data) => {
+          card.handleLike(data)
         })
-      } else {
-        api.addLike(id).then(res => {
-          card.handleLike(res.likes)
-          .catch((error) => console.error(`Ошибка при попытке поставить лайк ${error}`));
+        .catch((error) => console.error(` Ошибка при снятии лайка ${error}`))
+    },
+    handleSetLike (cardId) {
+        api.addLike(cardId).then((data) => {
+          card.handleLike(data)
         })
-      }
-    }, userId
-  );
-  return card.generateCard();
+        .catch((error) => console.error(`Ошибка при попытке поставить лайк ${error}`));
+    },
+  }, cardSelector, userId);
+  return card.generateCard(); 
 };
 
-const section = new Section({renderer: createNewCard}, cardsContainerSelector);
+const section = new Section({renderer: (data) => {
+  section.addItem(createNewCard(data))
+}}, cardsContainerSelector);
 
 Promise.all([api.getUser(), api.getCards()])
     .then(([data, cards]) => {
@@ -110,7 +89,7 @@ const popupOpenImage = new PopupWithImage (imagePopupOpen);
 popupOpenImage.setEventListeners();
 
 //popup открытие попапа подтверждения удаления
-const popupConfirm = new PopupWithForm(popupDelete);
+const popupConfirm = new PopupWithConfirm(popupDelete);
 popupConfirm.setEventListeners();
 
 //popup добавления картинок
@@ -119,7 +98,7 @@ popupNewPlace.setEventListeners();
 function handleFormCardAddSubmit(data) {
   api.addCard(data.nameImg,data.linkImg)
   .then((res) => {
-    section.addItem(createNewCard(res));
+    section.addNewItem(createNewCard(res));
     popupNewPlace.close();
   })
   .catch((error => console.error(`Ошибка при попытке создать карточку ${error}`)))
@@ -130,6 +109,13 @@ cardFormValidator.enableValidation();
 addPopupButton.addEventListener ('click', () => {
   popupNewPlace.open();
   cardFormValidator.resetFormError();
+});
+
+//данные юзера
+const userInfo = new UserInfo({ 
+  selectorUserName: profileName,
+  selectorUserAbout: profileInformation,
+  selectorUserAvatar: profileAvatar,
 });
 
 //редактирование профиля
